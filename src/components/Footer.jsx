@@ -18,7 +18,7 @@ const Footer = () => {
           <div className="flex flex-col items-center">
             <div className="text-2xl font-bold mb-6">Dhanush Pandian</div>
 
-            <div className="flex gap-4 mb-8">
+            <div className="flex flex-wrap gap-4 mb-8">
               <a
                 href={Bio.github}
                 target="_blank"
@@ -67,7 +67,7 @@ const Footer = () => {
             </div>
 
             <nav className="mb-8">
-              <ul className="flex flex-wrap justify-center gap-8">
+              <ul className="flex flex-wrap justify-center gap-8 text-center md:flex-row">
                 <li>
                   <a
                     href="#home"
