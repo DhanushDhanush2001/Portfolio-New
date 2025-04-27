@@ -12,13 +12,13 @@ const Footer = () => {
   const currentYear = new Date().getFullYear();
 
   return (
-    <footer className="bg-gray-800 text-white py-12">
+    <footer className="bg-gray-800 text-white py-12 w-full max-w-full">
       <div className="container mx-auto px-4 md:px-6">
         <div className="max-w-5xl mx-auto">
           <div className="flex flex-col items-center">
             <div className="text-2xl font-bold mb-6">Dhanush Pandian</div>
 
-            <div className="flex gap-4 mb-8">
+            <div className="flex flex-wrap gap-4 mb-8">
               <a
                 href={Bio.github}
                 target="_blank"
@@ -67,7 +67,7 @@ const Footer = () => {
             </div>
 
             <nav className="mb-8">
-              <ul className="flex flex-wrap justify-center gap-8">
+              <ul className="flex flex-wrap justify-center gap-8 text-center md:flex-row">
                 <li>
                   <a
                     href="#home"

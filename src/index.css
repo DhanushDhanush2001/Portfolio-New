@@ -7,6 +7,10 @@
   scroll-behavior: smooth;
 }
 
+body, html {
+  overflow-x: hidden;
+}
+
 body {
   font-family: 'Poppins', sans-serif;
 }
@@ -36,4 +40,8 @@ body {
 
 .animation-delay-700 {
   animation-delay: 700ms;
+}
+
+.break-words {
+  word-wrap: break-word;
 }
