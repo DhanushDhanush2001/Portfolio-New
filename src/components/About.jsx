@@ -45,11 +45,11 @@ const About = () => {
                 </div>
                 <div className="bg-gray-100 px-4 py-2 rounded-lg">
                   <span className="block text-sm text-gray-500">Email</span>
-                  <span className="font-medium">dhanush@example.com</span>
+                  <span className="font-medium">danushpandiyan2001@gmail.com</span>
                 </div>
                 <div className="bg-gray-100 px-4 py-2 rounded-lg">
                   <span className="block text-sm text-gray-500">Location</span>
-                  <span className="font-medium">Chennai, India</span>
+                  <span className="font-medium">Chennai, TamilNadu, India</span>
                 </div>
               </div>
             </div>
