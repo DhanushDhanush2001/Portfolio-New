@@ -187,7 +187,7 @@ export const Bio = {
         "Designed and developed using React.js, my portfolio website showcases a collection of my projects. It highlights my skills in frontend development, offering a seamless browsing experience and demonstrating my proficiency in React.",
       image: Portfolio,
       tags: ["React Js","Tailwind CSS"],
-      github: "https://github.com/DhanushDhanush2001/Dhanush-portfolio.git",
+      github: "https://github.com/DhanushDhanush2001/Portfolio-New.git",
       webapp: "",
     },
   ];
