@@ -1,61 +1,100 @@
 import React from 'react';
+import { motion } from 'framer-motion';
+import { Aboutus } from '../data/data';
+
+const containerVariants = {
+  hidden: { opacity: 0 },
+  visible: { 
+    opacity: 1, 
+    transition: { staggerChildren: 0.3, delayChildren: 0.2 } 
+  }
+};
+
+const itemVariants = {
+  hidden: { opacity: 0, y: 30 },
+  visible: { 
+    opacity: 1, 
+    y: 0, 
+    transition: { duration: 0.6, ease: 'easeOut' }
+  }
+};
 
 const About = () => {
   return (
-    <section id="about" className="py-20 bg-white">
-      <div className="container mx-auto px-4 md:px-6">
-        <div className="max-w-3xl mx-auto text-center mb-12">
-          <h2 className="text-3xl md:text-4xl font-bold mb-4">About Me</h2>
-          <div className="h-1 w-20 bg-blue-600 mx-auto"></div>
-        </div>
-        
-        <div className="max-w-5xl mx-auto">
-          <div className="grid md:grid-cols-2 gap-12 items-center">
-            <div className="animate-fadeIn">
-              <div className="aspect-square overflow-hidden rounded-2xl shadow-lg">
-                <img 
-                  src="https://images.pexels.com/photos/927022/pexels-photo-927022.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1" 
-                  alt="Dhanush Pandian" 
-                  className="w-full h-full object-cover transform hover:scale-105 transition-transform duration-500"
-                />
-              </div>
-            </div>
+    <section id="about" className="py-20 mt-2">
+    <motion.div
+      className="container mx-auto px-4 sm:px-6 lg:px-8 max-w-7xl"
+      initial="hidden"
+      whileInView="visible"
+      viewport={{ once: true, margin: "-100px" }}
+      variants={containerVariants}
+    >
+      <motion.div variants={itemVariants} className="text-center mb-16">
+        <h2 className="text-3xl sm:text-4xl font-bold text-gray-800 relative inline-block">
+          About Me
+          <span className="w-20 h-1 bg-blue-600 rounded mx-auto mt-2 block"></span>
+        </h2>
+      </motion.div>
+      
+      <div className="flex flex-col lg:flex-row items-center gap-12">
+        <motion.div 
+          variants={itemVariants}
+          className="w-full lg:w-1/2 flex justify-center"
+          whileHover={{ scale: 1.05, transition: { duration: 0.3 } }}
+        >
+          <div className="relative max-w-md">
+            {/* Decorative pattern */}
+            <div className="absolute -top-6 -left-6 w-full h-full bg-blue-100 rounded-lg"></div>
+            <div className="absolute -bottom-6 -right-6 w-full h-full bg-teal-100 rounded-lg"></div>
             
-            <div className="animate-fadeIn animation-delay-300 px-4 sm:px-0">
-              <h3 className="text-2xl font-bold mb-4 text-gray-800">Full Stack Developer</h3>
-              <p className="text-gray-600 mb-6 leading-relaxed">
-                I'm a passionate Full Stack Developer specializing in the MERN stack (MongoDB, Express.js, React, and Node.js). 
-                With a strong foundation in both frontend and backend technologies, I enjoy creating intuitive, efficient web applications 
-                that solve real-world problems.
-              </p>
-              <p className="text-gray-600 mb-6 leading-relaxed">
-                My journey in web development started during my Computer Application studies, where I discovered my passion for creating 
-                digital experiences. Since then, I've been constantly learning and improving my skills to stay updated with the latest 
-                technologies and best practices in the industry.
-              </p>
-              <p className="text-gray-600 mb-6 leading-relaxed">
-                When I'm not coding, you can find me exploring new technologies, contributing to open-source projects, or sharing my 
-                knowledge with others in the developer community.
-              </p>
-              
-              <div className="flex flex-wrap gap-4">
-                <div className="bg-gray-100 px-4 py-2 rounded-lg">
-                  <span className="block text-sm text-gray-500">Name</span>
-                  <span className="font-medium">Dhanush Pandian</span>
-                </div>
-                <div className="bg-gray-100 px-4 py-2 rounded-lg">
-                  <span className="block text-sm text-gray-500">Email</span>
-                  <span className="font-medium">dhanush@example.com</span>
-                </div>
-                <div className="bg-gray-100 px-4 py-2 rounded-lg">
-                  <span className="block text-sm text-gray-500">Location</span>
-                  <span className="font-medium">Chennai, India</span>
-                </div>
-              </div>
+            {/* Image */}
+            <div className="relative z-10 rounded-lg overflow-hidden shadow-xl border-4 border-white">
+              <img
+                src={Aboutus.image}
+                alt="Dhanush Pandian"
+                className="w-full h-auto object-cover"
+              />
             </div>
           </div>
-        </div>
+        </motion.div>
+        
+        <motion.div variants={itemVariants} className="w-full lg:w-1/2 space-y-6">
+          <div className="bg-white p-8 rounded-lg shadow-md">
+            <h3 className="text-2xl font-semibold text-gray-800 mb-4">
+              My Journey
+            </h3>
+            
+            <p className="text-gray-600 mb-6 leading-relaxed">
+              {Aboutus.description}
+            </p>
+            
+            <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
+              {[
+                { color: 'blue', num: '01', title: 'Full Stack Developer', desc: 'Delivering end-to-end web solutions' },
+                { color: 'teal', num: '02', title: 'Efficient Problem Solver', desc: 'Converting complex issues into scalable code' },
+                { color: 'amber', num: '03', title: 'Tech Enthusiast & Learner', desc: 'Exploring new tools, frameworks' },
+                { color: 'blue', num: '04', title: 'Collaborative Team Player', desc: 'Aligning cross-functional teams to build great products' }
+              ].map(({ color, num, title, desc }) => (
+                <motion.div
+                  key={num}
+                  className="flex items-center gap-2"
+                  variants={itemVariants}
+                  whileHover={{ scale: 1.05 }}
+                >
+                  <div className={`w-12 h-12 rounded-full bg-${color}-100 flex items-center justify-center flex-shrink-0`}>
+                    <span className={`text-${color}-700 font-semibold`}>{num}</span>
+                  </div>
+                  <div>
+                    <h4 className="font-medium text-gray-800">{title}</h4>
+                    <p className="text-sm text-gray-500">{desc}</p>
+                  </div>
+                </motion.div>
+              ))}
+            </div>
+          </div>
+        </motion.div>
       </div>
+    </motion.div>
     </section>
   );
 };

@@ -1,116 +1,178 @@
-import React from 'react';
-import { education, cerification } from '../data/data';
-import { Calendar, GraduationCap, Award } from 'lucide-react';
+import React from "react";
+import { motion } from "framer-motion";
+import { education, cerification } from "../data/data";
+import { Calendar, GraduationCap, Award, Building, Star } from "lucide-react";
+
+const containerVariants = {
+  hidden: { opacity: 0 },
+  visible: {
+    opacity: 1,
+    transition: {
+      staggerChildren: 0.2,
+    },
+  },
+};
+
+const itemVariants = {
+  hidden: { opacity: 0, y: 20 },
+  visible: { opacity: 1, y: 0 },
+};
 
 const Education = () => {
   return (
-    <section id="education" className="py-20 bg-slate-50">
-       <div className="container mx-auto px-4 md:px-6">
-        <div className="max-w-3xl mx-auto text-center mb-12">
-            <h2 className="text-3xl md:text-4xl font-bold mb-4">Education & Certifications</h2>
-            <div className="h-1 w-20 bg-blue-600 mx-auto mb-6"></div>
-            <p className="text-gray-600">
-            My academic background and professional certifications
-          </p>
+    <section id="education" className="py-20 bg-gray-50">
+  <div className="container mx-auto px-4 md:px-6 max-w-5xl">
+    <motion.div
+      initial="hidden"
+      whileInView="visible"
+      viewport={{ once: true, margin: "-100px" }}
+      variants={containerVariants}
+      className=""  // removed max-w-4xl here to let container control width
+    >
+      {/* Section Header */}
+      <motion.div variants={itemVariants} className="text-center mb-12">
+        <h2 className="text-3xl md:text-4xl font-bold text-gray-900 mb-4">
+          Education & Certifications
+        </h2>
+        <div className="w-20 h-1 bg-blue-600 mx-auto mb-6"></div>
+        <p className="text-gray-600 max-w-2xl mx-auto">
+          My academic journey and professional development
+        </p>
+      </motion.div>
+
+      {/* Education Section */}
+      <motion.div variants={itemVariants} className="mb-16">
+        <div className="text-center mb-10">
+          <h3 className="text-2xl font-bold text-gray-900 mb-2">Education</h3>
+          <div className="w-16 h-0.5 bg-blue-600 mx-auto"></div>
         </div>
 
-        <div className="max-w-5xl mx-auto">
-            <div className="mb-16">
-                <h3 className="text-2xl font-bold mb-8 flex items-center justify-center">
-                <GraduationCap className="mr-2 h-6 w-6 text-blue-600" />
-                <span>Education</span>
-         </h3>       
-
-         <div className="space-y-8">
-            {education.map((edu,index) => (
-                <div
-                key={edu.id}
-                className="bg-white rounded-xl p-6 shadow-sm hover:shadow-md transition-shadow animate-fadeIn"
-                style={{ animationDelay: `${index * 200}ms`}}
-                >
-             <div className="flex flex-col md:flex-row gap-6">
-                <div className="md:w-1/4 flex-shrink-0">
-                <img
-                  src={edu.img}
-                  alt={edu.school}
-                  className="w-full h-auto rounded-lg object-cover aspect-video md:aspect-square"
+        {/* grid max width consistent with container */}
+        <div className="grid md:grid-cols-2 gap-6">
+          {education.map((edu) => (
+            <motion.div
+              key={edu.id}
+              variants={itemVariants}
+              whileHover={{ y: -8 }}
+              className="bg-white rounded-xl p-6 shadow-sm border border-gray-100 hover:shadow-lg transition-all duration-300"
+            >
+              {/* Institution Image */}
+              <div className="flex justify-center mb-4">
+                <div className="w-16 h-16 rounded-full overflow-hidden border-3 border-blue-100 shadow-md">
+                  <img
+                    src={edu.img}
+                    alt={edu.school}
+                    className="w-full h-full object-cover"
                   />
+                </div>
+              </div>
+
+              {/* Content */}
+              <div className="text-center">
+                <h4 className="text-lg font-bold text-gray-900 mb-2 leading-tight">
+                  {edu.degree}
+                </h4>
+
+                <div className="flex items-center justify-center mb-3">
+                  <h5 className="text-base font-semibold text-blue-600">
+                    {edu.school}
+                  </h5>
+                </div>
+
+                <div className="flex items-center justify-center space-x-4 mb-3 text-sm text-gray-600">
+                  <div className="flex items-center">
+                    <Calendar className="w-4 h-4 mr-2" />
+                    {edu.date}
                   </div>
-
-                  <div className="md:w-3/4">
-                   <h4 className="text-xl font-bold mb-1">{edu.degree}</h4>
-                   <h5 className="text-lg font-medium text-gray-700 mb-2">{edu.school}</h5>
-                  
-                  <div className="flex items-center text-gray-500 mb-4">
-                    <Calendar className="h-4 w-4 mr-2" />
-                    <span className="text-sm">{edu.date}</span>
-                    </div>
-
-                 <p className="text-gray-600 mb-2">
-                    <span className="font-medium">Grade:</span>|{edu.grade}
-                 </p>
-                 <p className="text-gray-600">{edu.desc}</p>
-                    </div>
+                  <div className="flex items-center">
+                    <Star className="w-4 h-4 mr-2 text-yellow-500" />
+                    {edu.grade}
                   </div>
                 </div>
+
+                <p className="text-gray-600 leading-relaxed text-sm">{edu.desc}</p>
+              </div>
+            </motion.div>
+          ))}
+        </div>
+      </motion.div>
+
+      {/* Certifications Section */}
+      <motion.div variants={itemVariants}>
+        <div className="text-center mb-10">
+          <h3 className="text-2xl font-bold text-gray-900 mb-2">
+            Professional Certifications
+          </h3>
+          <div className="w-16 h-0.5 bg-green-600 mx-auto"></div>
+        </div>
+
+        <div>
+          {cerification.map((cert) => (
+            <motion.div
+              key={cert.id}
+              variants={itemVariants}
+              whileHover={{ y: -8 }}
+              className="bg-white rounded-xl p-6 shadow-sm border border-gray-100 hover:shadow-lg transition-all duration-300 mb-6"
+            >
+              {/* Certificate Image */}
+              <div className="flex justify-center mb-4">
+                <div className="relative">
+                  <div className="w-16 h-16 rounded-full overflow-hidden border-3 border-green-100 shadow-md">
+                    <img
+                      src={cert.img}
+                      alt={cert.company}
+                      className="w-full h-full object-cover"
+                    />
+                  </div>
+                  <div className="absolute -top-1 -right-1 w-6 h-6 bg-green-500 rounded-full flex items-center justify-center shadow-md">
+                    <Award className="w-4 h-4 text-white" />
+                  </div>
+                </div>
+              </div>
+
+              {/* Content */}
+              <div className="text-center">
+                <h4 className="text-lg font-bold text-gray-900 mb-2 leading-tight">
+                  {cert.role}
+                </h4>
+
+                <div className="flex items-center justify-center mb-3">
+                  <Building className="w-4 h-4 text-green-600 mr-2" />
+                  <h5 className="text-base font-semibold text-green-600">
+                    {cert.company}
+                  </h5>
+                </div>
+
+                <div className="flex items-center justify-center mb-3 text-sm text-gray-600">
+                  <Calendar className="w-4 h-4 mr-2" />
+                  {cert.date}
+                </div>
+
+                <p className="text-gray-600 leading-relaxed text-sm mb-4">
+                  {cert.desc}
+                </p>
+
+                {/* Skills Tags */}
+                <div className="flex flex-wrap justify-center gap-2">
+                  {cert.skills.map((skill, idx) => (
+                    <span
+                      key={idx}
+                      className="bg-gradient-to-r from-blue-50 to-green-50 text-gray-700 text-xs font-medium px-2 py-1 rounded-full border border-gray-200"
+                    >
+                      {skill}
+                    </span>
                   ))}
-            </div>     
-           </div>
+                </div>
+              </div>
+            </motion.div>
+          ))}
+        </div>
+      </motion.div>
+    </motion.div>
+  </div>
+</section>
 
-         <div>
-            <h3 className="text-2xl font-bold mb-8 flex items-center justify-center">
-            <Award className="mr-2 h-6 w-6 text-blue-600" />
-            <span>Certifications</span>
-            </h3>         
-            </div>
+  );
+};
 
-            <div className="space-y-8">
-                {cerification.map((cert,index) => (
-                    <div
-                     key={cert.id}
-                     className="bg-white rounded-xl p-6 shadow-sm hover:shadow-md transition-shadow animate-fadeIn"
-                     style={{ animationDelay: `${index * 200}ms`}}
-                     >
-                        <div className="flex flex-col md:flex-row gap-6">
-                    <div className="md:w-1/4 flex-shrink-0">
-                      <img 
-                        src={cert.img} 
-                        alt={cert.company} 
-                        className="w-full h-auto rounded-lg object-cover aspect-video md:aspect-square"
-                      />
-                    </div>
-
-                    <div className="md:w-3/4">
-                    <h4 className="text-xl font-bold mb-1">{cert.role}</h4>                
-                    <h5 className="text-lg font-medium text-gray-700 mb-2">{cert.company}</h5>
-
-                    <div className="flex items-center text-gray-500 mb-4">
-                        <Calendar className="h-4 w-4 mr-2" />
-                        <span className="text-sm">{cert.date}</span>
-                      </div>
-                      
-                      <p className="text-gray-600 mb-4">{cert.desc}</p>
-
-                      <div className="flex flex-wrap gap-2">
-                        {cert.skills.map((skill,skillIndex) => (
-                            <span
-                            key={skillIndex}
-                            className="bg-blue-100 text-blue-800 text-xs px-2 py-1 rounded-full"
-                          >
-                            {skill}
-                            </span>
-                        ))}
-                      </div>
-                   </div>
-                   </div>
-                   </div>
-                  ))}
-           </div>
-       </div>
-       </div>
-    </section>
-    
-  )
-}
-
-export default Education
+export default Education;
