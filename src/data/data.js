@@ -7,7 +7,8 @@ import Portfolio from "../assets/Portfolio.jpg";
 import BookReview from "../assets/BookReview.jpg";
 import ChatApp from '../assets/Chat.jpg';
 import JobListing from '../assets/JobListing.jpg';
-import AboutImg from '../assets/about.jpg'
+import AboutImg from '../assets/about.jpg';
+
 
 export const Bio = {
   name: "Dhanush Pandian",
