@@ -7,7 +7,7 @@ import Portfolio from "../assets/Portfolio.jpg";
 import BookReview from "../assets/BookReview.jpg";
 import ChatApp from '../assets/Chat.jpg';
 import JobListing from '../assets/JobListing.jpg';
-import About from '../assets/About.jpg'
+import AboutImg from '../assets/about.jpg'
 
 export const Bio = {
   name: "Dhanush Pandian",
@@ -29,7 +29,7 @@ export const Aboutus = {
   description: `I'm Dhanush Pandian, a Full Stack Developer based in Chennai, India, with a professional background that began in Quality Assurance (QA) before transitioning into full stack development. My experience in QA helped me build a strong foundation in debugging, attention to detail, and understanding how applications function end-to-end — skills that now enhance my work as a developer.
 I specialize in building modern, responsive web applications using the MERN stack — MongoDB, Express.js, React, and Node.js. I’m passionate about writing clean, maintainable code, crafting user-friendly interfaces, and optimizing performance.
 Driven by curiosity and a commitment to continuous learning, I enjoy solving real-world problems through technology. Whether collaborating within a team or working independently, I focus on delivering scalable, impactful solutions that make a difference.`,
- image: About
+ image: AboutImg
 };
 
 
